@@ -50,7 +50,12 @@ Host my-env
     UserKnownHostsFile /dev/null
 ```
 
-Depois é só usar `ssh my-env`.
+Depois é só usar:
+
+```bash
+ssh my-env
+```
+
 Senha: `dev`
 
 ### Via terminal direto
