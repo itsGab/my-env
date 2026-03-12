@@ -1,0 +1,21 @@
+services:
+  dev-env:
+    build: .
+    container_name: dev-env
+    volumes:
+      - .:/workspace
+    ports:
+      - "127.0.0.1:2222:22"
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "pgrep", "-x", "sshd" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    command: >
+      sh -c "chmod +x /workspace/scripts/setup.sh &&
+             /workspace/scripts/setup.sh &&
+             /usr/sbin/sshd -D"

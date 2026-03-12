@@ -1,0 +1,17 @@
+# Docker
+.docker/
+docker-compose.override.yaml
+
+# Builds e imagens
+*.tar
+*.tar.gz
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
