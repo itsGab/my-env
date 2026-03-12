@@ -15,6 +15,11 @@ Um **ambiente de desenvolvimento básico** baseado em Debian Trixie, containeriz
 ## Instalação
 
 1. Clone ou baixe este projeto
+
+```bash
+git clone https://github.com/itsGab/my-env.git
+```
+
 2. Abra o terminal na pasta do projeto
 3. Execute:
 
