@@ -21,6 +21,11 @@ git clone https://github.com/itsGab/my-env.git
 ```
 
 2. Abra o terminal na pasta do projeto
+
+```bash
+cd my-env
+```
+
 3. Execute:
 
 ```bash
