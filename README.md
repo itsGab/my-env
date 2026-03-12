@@ -3,9 +3,7 @@
 Um **ambiente de desenvolvimento básico** baseado em Debian Trixie, containerizado com Docker e acessível via SSH para uso local.
 
 
-## ⚠️ Aviso de Segurança
-
-**Este container é destinado apenas para uso local em desenvolvimento. O SSH só é acessível via localhost e não deve ser exposto a redes públicas ou à internet.**
+> **Aviso de Segurança**: *Este container é destinado apenas para uso **local** em desenvolvimento. O SSH só é acessível via localhost e não deve ser exposto a redes públicas ou à internet.*
 
 
 ## Requisitos
