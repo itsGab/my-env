@@ -1,5 +1,5 @@
 services:
-  dev-env:
+  dev:
     build: .
     container_name: dev-env
     volumes:
