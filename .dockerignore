@@ -1,8 +1,9 @@
 .git
+.github
 .gitignore
 .dockerignore
-README.md
-TODO.md
 .env
 .env.*
 *.md
+Projects/*
+!Projects/.gitkeep

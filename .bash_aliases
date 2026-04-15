@@ -27,11 +27,5 @@ alias rm='rm -iv'    # segurança extra: pergunta antes de deletar
 alias mkdir='mkdir -pv' # mostra as pastas a serem criadas
 alias grep='grep --color=auto'
 
-# Docker
-alias d='docker'
-alias dc='docker compose'
-alias dps='docker ps'
-alias dex='docker exec -it'
-
 # Rede
 alias ip='ip -c'
