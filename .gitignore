@@ -17,3 +17,4 @@ docker-compose.override.yaml
 Thumbs.db
 
 .env
+/Projects/*
