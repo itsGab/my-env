@@ -3,31 +3,13 @@ services:
     build:
       context: .
       args:
-        DEV_USER: ${DEV_USER:-dev}
-        DEV_PASS: ${DEV_PASS:-dev}
         USER_UID: ${USER_UID:-1000}
         USER_GID: ${USER_GID:-1000}
-    container_name: dev-env
+    image: devenv
+    container_name: devcont
     volumes:
-      - .:/workspace
-    ports:
-      - "127.0.0.1:2222:22"
+      - ./Projects:/workspace/Projects
+      - ./.bash_aliases:/workspace/.bash_aliases
     stdin_open: true
     tty: true
     restart: "no"
-    entrypoint: [ "/usr/bin/tini", "--" ]
-    environment:
-      # Passa o nome do usuário para o setup.sh poder usar
-      - DEV_USER=${DEV_USER:-dev}
-    healthcheck:
-      test: [ "CMD", "pgrep", "-x", "sshd" ]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
-    command: >
-      sh -c "if [ -f /workspace/scripts/setup.sh ]; then
-               chmod +x /workspace/scripts/setup.sh &&
-               /workspace/scripts/setup.sh;
-             fi &&
-             /usr/sbin/sshd -D"
