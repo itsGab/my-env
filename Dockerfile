@@ -15,7 +15,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/* \
     nano \
     vim \
-    tini \
     && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
     && locale-gen
 
@@ -60,5 +59,4 @@ RUN chown -R $USER:$USER /workspace
 
 USER $USER
 
-ENTRYPOINT ["/usr/bin/tini", "--"]
 CMD ["/bin/bash"]
