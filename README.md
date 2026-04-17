@@ -1,61 +1,56 @@
-# my-env: Ambiente de Desenvolvimento Container Debian:Trixie
+# my-env: Ambiente de Desenvolvimento Containerizado (Debian Trixie)
 
-Ambiente de desenvolvimento containerizado baseado em Debian Trixie com Python (via `uv`) e ferramentas essenciais.
+Este projeto fornece um ambiente de desenvolvimento isolado e persistente baseado em **Debian Trixie**, otimizado para o ecossistema Python moderno e fluxos de trabalho assistidos por **Inteligência Artificial**.
+
+## Destaques do Ambiente
+
+* **Python Engine:** Gerenciamento de pacotes e ambientes ultrarrápido via `uv`.
+* **AI-Powered:** Integrado com `Opencode` para programação assistida por IA.
+* **Permission Sync:** Script de build que sincroniza automaticamente seu `UID` e `GID`, evitando problemas de permissão de arquivos no host.
+* **Base Atualizada:** Utiliza Debian Trixie (Testing) para acesso a pacotes mais recentes.
 
 ## Requisitos
 
-- Docker
-- Docker Compose
+* Docker & Docker Compose
+* (Opcional) Ambiente Linux/Unix para execução do script shell.
 
-## Instalação
+## Instalação e Uso
 
-
-## Como criar a imagem `devenv`
-
+### 1. Construir a imagem
+O script `./build.sh` configura a imagem `devenv` injetando as permissões do seu usuário local:
 ```bash
+chmod +x build.sh
 ./build.sh
 ```
 
-O script detecta automaticamente seu UID/GID local e passa para o container, garantindo que arquivos criados dentro do container mantenham as permissões corretas no host.
-
-## Como criar o container
-
+### 2. Subir o ambiente
 ```bash
 docker compose up -d
 ```
 
-## Como acessar
-
+### 3. Acessar o terminal
 ```bash
-docker compose exec dev bash
+docker compose exec -it dev bash
 ```
 
-## Comandos úteis
+## Comandos e Utilitários
 
-| Comando | O que faz |
-|---------|-----------|
-| `./build.sh` | Constrói / Reconstrói a imagem |
-| `docker compose up -d` | Inicia o container |
-| `docker compose down` | Remove o container |
-| `docker compose restart` | Reinicia o container |
-| `docker compose logs -f` | Mostra logs em tempo real |
+### Ciclo de vida do container
+| Comando | Descrição |
+| --- | --- |
+| `./build.sh` | Constrói ou reconstrói a imagem com permissões locais |
+| `docker compose up -d` | Inicia o ambiente em segundo plano |
+| `docker compose down` | Encerra e remove o container |
+| `docker compose logs -f` | Monitora a saída do container em tempo real |
 
-## Estrutura do Workspace
+### Atalhos (Aliases) de Produtividade
+Dentro do container, utilize os seguintes aliases configurados:
+* `ll`: Listagem detalhada de arquivos (`ls -lh`).
+* `la`: Listagem de todos os arquivos, incluindo ocultos.
+* `aptinstall <pacote>`: Atalho para instalação rápida de dependências.
+* `aptclean`: Limpeza profunda do cache do `apt` para manter o container leve.
 
-```
-/workspace/Projects    # Seus projetos ficam aqui
-```
-
-O diretório `./Projects` do host é montado em `/workspace/Projects` no container.
-
-### Aliases disponíveis
-
-| Comando | Função |
-|---------|-----------|
-| `ll` | Lista arquivos com detalhes |
-| `la` | Lista arquivos ocultos |
-| `aptinstall <pacote>` | Instala pacote via apt |
-| `aptclean` | Limpa cache do apt |
-
-Para ver todos:
-[aliases](.bash_aliases) ou `alias` no container.
+## Estrutura de Volumes
+Para garantir a persistência dos seus códigos:
+* O diretório `./Projects` no host é mapeado para `/workspace/Projects` no container.
+* Sempre salve seus projetos dentro desta estrutura para não perder dados ao destruir o container.

@@ -16,9 +16,10 @@ docker-compose.override.yaml
 .DS_Store
 Thumbs.db
 
+# Logs
+*.log
+
+# Others
 .env
 /Projects/*
 diff.txt
-
-# Logs
-*.log
