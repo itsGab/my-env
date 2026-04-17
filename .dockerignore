@@ -7,3 +7,4 @@
 *.md
 Projects/*
 !Projects/.gitkeep
+docker-compose.override.yaml

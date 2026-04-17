@@ -1,4 +1,4 @@
-# Aliases para desenvolvimento
+[[ $- != *i* ]] && return
 
 # Apt
 alias aptinstall='sudo apt update && sudo apt install -y'
@@ -21,10 +21,10 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ..='cd ..'
 alias c='clear'
-alias cp='cp -iv'    # confirma antes de sobrescrever e mostra o que faz
-alias mv='mv -iv'    # confirma antes de mover e mostra progresso
-alias rm='rm -iv'    # segurança extra: pergunta antes de deletar
-alias mkdir='mkdir -pv' # mostra as pastas a serem criadas
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -iv'
+alias mkdir='mkdir -pv'
 alias grep='grep --color=auto'
 
 # Rede

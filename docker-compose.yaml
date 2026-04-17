@@ -9,8 +9,19 @@ services:
     init: true
     container_name: devcont
     volumes:
-      - ./Projects:/workspace/Projects
-      - ./.bash_aliases:/workspace/.bash_aliases
+      - ./Projects:/workspace/Projects:rw
+      - ./.bash_aliases:/workspace/.bash_aliases:ro
     stdin_open: true
     tty: true
-    restart: "no"
+    restart: no
+    networks:
+      - devnet
+    healthcheck:
+      test: [ "CMD", "test", "-d", "/workspace/Projects" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  devnet:
+    driver: bridge
